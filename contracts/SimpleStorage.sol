@@ -1,4 +1,4 @@
-// Este contrato pertenece a yoel torres
+// Este contrato pertenece a Shaizito :P ahora en la blockchain por siempre con Shaizita <3
 // SPDX-License-Identifier: MIT
 
 pragma solidity 0.8.7;
