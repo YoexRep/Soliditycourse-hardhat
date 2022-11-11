@@ -1,7 +1,7 @@
 // Este contrato pertenece a Shaizito :P ahora en la blockchain por siempre con Shaizita <3
 // SPDX-License-Identifier: MIT
 
-pragma solidity 0.8.7;
+pragma solidity ^0.8.8;
 
 // pragma solidity ^0.8.0;
 // pragma solidity >=0.8.0 <0.9.0;

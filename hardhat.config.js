@@ -2,11 +2,16 @@ require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config(); // Recordar agregar dotenv con -- yarn add --dev dotev
 
 require("@nomiclabs/hardhat-etherscan"); // Plugin para utilizar el api de etherscan y poder verificar y validar los contratos
-require("./tasks/block-number");
-const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL;
-const PRIVATE_KEY = process.env.PRIVATE_KEY;
+require("./tasks/block-number"); // Tarea para ver el ultimo numero de bloque de una blockchain
+require("hardhat-gas-reporter"); // Para probar cuanto gas consume cada parrte de mi codigo.
+require("hardhat-deploy"); //Paquete para facilitar el deploy y testing de nuesto codigo
 
-const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
+const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL || "key"; //Estos pipes es para en caso de que no tenga el url
+const PRIVATE_KEY = process.env.PRIVATE_KEY || "key";
+
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "key";
+
+const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || "key";
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -20,9 +25,26 @@ module.exports = {
       chainId: 5,
     },
   },
-  solidity: "0.8.7",
+  solidity: "0.8.8",
 
   etherscan: {
     apiKey: ETHERSCAN_API_KEY,
+  },
+
+  gasReporter: {
+    enabled: true,
+    outputFile: "gas-report.txt", // para exportarlo a un fichero
+    noColors: true, // sin color para evitar problemas con el archivo txt
+    currency: "USD", // y podemos ponerle en que unidad queremos ver el reporte del gas
+    coinmarketcap: COINMARKETCAP_API_KEY, // Para obtener el precio necesito conectarme a coinmarketcap con una API
+    token: "BNB",
+  },
+  namedAccounts: {
+    deployer: {
+      default: 0,
+    },
+    user: {
+      default: 1,
+    },
   },
 };
