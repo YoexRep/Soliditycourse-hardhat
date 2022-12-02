@@ -16,16 +16,19 @@ const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || "key";
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   //aqui se le puede indicar la red que usara por defecto hardhat
-
+  // solidity: "0.8.8",
+  solidity: {
+    compilers: [{ version: "0.8.8" }, { version: "0.6.6" }],
+  },
   defaultNetwork: "hardhat",
   networks: {
     goerli: {
       url: GOERLI_RPC_URL,
       accounts: [PRIVATE_KEY], // Es la direccion de clave privada de mi wallet
       chainId: 5,
+      blockConfirmation: 6, //Los bloques que tiene que esperar la red de goerli, indice nuestra transaccion. y podamos verla
     },
   },
-  solidity: "0.8.8",
 
   etherscan: {
     apiKey: ETHERSCAN_API_KEY,

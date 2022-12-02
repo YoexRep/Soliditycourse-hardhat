@@ -11,6 +11,16 @@ const networkConfig = {
   },
 };
 
+const developmentChains = ["hardhat", "localhost"];
+
+const DECIMALS = 8; // Es la cantidad de 0 decimales que manejaran los precios
+
+//Esta inicializa en 2000 pero como le agrego 8 ceros, se ve asi.
+const INITIAL_ANSWER = 200000000000;
+
 module.exports = {
   networkConfig,
+  developmentChains,
+  DECIMALS,
+  INITIAL_ANSWER,
 };
